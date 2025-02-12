@@ -1,0 +1,7 @@
+https://data.go.th/dataset/publicdebt-dataset
+
+https://www.pdmo.go.th/th/public-debt/debt-outstanding
+
+https://app.bot.or.th/BTWS_STAT/statistics/BOTWEBSTAT.aspx?reportID=223&language=TH
+
+https://app.bot.or.th/BTWS_STAT/statistics/ReportPage.aspx?reportID=409&language=th
