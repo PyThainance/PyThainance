@@ -2,3 +2,6 @@ __pycache__/
 myenv/
 *.pyc
 *.ipynb
+build/
+dist/
+pythainance.egg-info/

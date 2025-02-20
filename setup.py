@@ -1,10 +1,8 @@
-# setup.py
-
 from setuptools import setup, find_packages
 
 setup(
-    name="PyThainance",
-    version="0.1.0",
+    name="pythainance",
+    version="0.0.7",
     author="Warit Mahitti",
     author_email="mrwaritmahitti@gmail.com",
     description="AI financial analysis library for Thai financial data",
@@ -12,11 +10,17 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/PyThainance/PyThainance.git",
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+    "pythainance": ["dataset/*.xlsx", "dataset/*.txt", "dataset/backup_dataset/*.xlsx"],
+    },
     install_requires=[
         "pandas",
         "matplotlib",
         "seaborn",
-        "openpyxl"
+        "openpyxl",
+        "playwright",
+        "beautifulsoup4"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

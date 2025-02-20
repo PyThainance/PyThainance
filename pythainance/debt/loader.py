@@ -1,22 +1,26 @@
 import pandas as pd
 from datetime import datetime
+from importlib import resources
+
+file_path = resources.files("pythainance").joinpath("dataset/debt.xlsx")
+base_file_path = resources.files("pythainance").joinpath("dataset/backup_dataset/debt.xlsx")
 
 def setup_debt_data():
     """
     Load data from the backup dataset and transform it to the desired format.
     """
-    df = pd.read_excel("dataset/backup_dataset/debt.xlsx", skiprows=[0])
+    df = pd.read_excel(base_file_path, skiprows=[0])
     df = df.T
     df.columns = df.iloc[0]
     df = df[1:]
-    df.to_excel("dataset/debt.xlsx", index=True)
+    df.to_excel(file_path, index=True)
 
 def fix_format_date_debt_data():
     """
     Convert Thai date formats to datetime objects, add 'month' and 'year' columns,
     and sort the data by date.
     """
-    df = pd.read_excel("dataset/debt.xlsx")
+    df = pd.read_excel(file_path)
 
     thai_months = {
         "ม.ค.": 1, "ก.พ.": 2, "มี.ค.": 3, "เม.ย.": 4, "พ.ค.": 5, "มิ.ย.": 6,
@@ -40,21 +44,21 @@ def fix_format_date_debt_data():
     df.sort_index(inplace=True)
     df.index = df.index.strftime('%d/%m/%Y')
 
-    df.to_excel("dataset/debt.xlsx", index=True)
+    df.to_excel(file_path, index=True)
     
 def clean_debt():
     """
     clean and return the debt data.
     """
-    df = pd.read_excel("dataset/debt.xlsx", thousands=",")
+    df = pd.read_excel(file_path, thousands=",")
     df = df.iloc[:, :-2]
     if 'Unnamed: 0' in df.columns:
         df = df.drop(columns=['Unnamed: 0'])
-    df.to_excel("dataset/debt.xlsx", index=False)
+    df.to_excel(file_path, index=False)
 
 def get_debt_data():
     """
     Load and return the debt data.
     """
-    df = pd.read_excel("dataset/debt.xlsx")
+    df = pd.read_excel(file_path)
     return df
